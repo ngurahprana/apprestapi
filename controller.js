@@ -17,3 +17,16 @@ exports.tampilsemuapegawai = function (req,res){
         }
     });
 };
+
+//menampilkan semua data pegawai berdasarkan id
+exports.tampilberdasarkanid = function (req,res){
+    let id = req.params.id;
+    connection.query('SELECT * FROM pegawai WHERE id_pegawai= ?', [id], 
+        function (error, rows, fileds){
+            if(error){
+                connection.log(error);
+            }else {
+                response.ok(rows,res);
+            }
+        });
+};

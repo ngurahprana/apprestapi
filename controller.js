@@ -47,3 +47,21 @@ exports.tambahpegawai = function (req,res){
         }
     });
 };
+
+//mengubah data berdasarkan id
+exports.ubahpegawai = function (req,res){
+    var id = req.body.id_pegawai;
+    var nip = req.body.nip;
+    var nama = req.body.nama;
+    var jabatan = req.body.jabatan;
+
+    connection.query('UPDATE pegawai SET nip=?, nama=?, jabatan=? WHERE id_pegawai=?', [nip,nama,jabatan,id],
+    function(error, rows, fileds){
+        if(error){
+            console.log(error);
+        }else{
+            response.ok("Berhasil Ubah Data", res)
+        }
+    });
+
+};

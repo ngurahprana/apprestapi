@@ -30,3 +30,20 @@ exports.tampilberdasarkanid = function (req,res){
             }
         });
 };
+
+//menambahkan data pegawai
+exports.tambahpegawai = function (req,res){
+    var nip = req.body.nip;
+    var nama = req.body.nama;
+    var jabatan = req.body.jabatan;
+
+    connection.query('INSERT INTO pegawai (nip,nama,jabatan) VALUES (?,?,?)', 
+    [nip,nama,jabatan],
+    function (error, rows, fileds){
+        if(error){
+            console.log(error);
+        }else{
+            response.ok("Berhasil Menambahkan Data!",res)
+        }
+    });
+};

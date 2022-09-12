@@ -65,3 +65,16 @@ exports.ubahpegawai = function (req,res){
     });
 
 };
+
+//Menghapus data berdasarkan id
+exports.hapuspegawai = function(req,res){
+    var id = req.body.id_pegawai;
+    connection.query('DELETE FROM pegawai WHERE id_pegawai=?', [id],
+    function(error, rows, fileds) {
+        if(error){
+            console.log(error);
+        }else{
+            response.ok("Berhasil Hapus Data", res)
+        }
+    });
+};

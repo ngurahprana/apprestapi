@@ -78,3 +78,16 @@ exports.hapuspegawai = function(req,res){
         }
     });
 };
+
+//menampilkan tupoksi group
+exports.tampilgrouptupoksi = function(req,res){
+    connection.query('SELECT pegawai.id_pegawai, pegawai.nip, pegawai.nama, pegawai.jabatan, tupoksi.nama_tupoksi FROM laporan JOIN tupoksi JOIN pegawai WHERE laporan.id_tupoksi = tupoksi.id_tupoksi AND laporan.id_pegawai = pegawai.id_pegawai ORDER BY pegawai.id_pegawai',
+        function(error, rows, fileds){
+            if(error){
+                console.log(error);
+            }else{
+                response.oknested(rows, res);
+            }
+        }
+    )
+}
